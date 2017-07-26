@@ -1,9 +1,73 @@
 <!doctype html>
 <html>
-  <head>
-    <title>High Performance Animations</title>
-  </head>
-  <body>
-    <script src="/reload/reload.js"></script>
-  </body>
+
+<head>
+  <title>High Performance Animations</title>
+  <style>
+    html,
+    body,
+    .layout {
+      margin: 0;
+      height: 100%;
+      color: #fff;
+      text-align: center;
+    }
+
+    .menu-icon {
+      font-size: 30px;
+      cursor: pointer;
+      float: left;
+    }
+
+    .header {
+      background-color: #52c8f5;
+      overflow: hidden;
+      line-height: 30px;
+      font-weight: bold;
+    }
+
+    .app-menu {
+      position: fixed;
+      top: 0px;
+      bottom: 0px;
+      width: 300px;
+      background-color: #3a3839;
+    }
+    /* animation style */
+
+    .app-menu {
+      left: -300px;
+      transition: left 300ms linear;
+    }
+
+    .app-menu-open .app-menu {
+      left: 0px;
+      transition: left 300ms linear;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="layout">
+    <div class="app-menu">Menu</div>
+    <div class="header">
+      <div class="menu-icon">🍔</div>
+      High Performance Animations
+    </div>
+  </div>
+  <script>
+    function toggleClassMenu() {
+      var layout = document.querySelector(".layout");
+      if (!layout.classList.contains("app-menu-open")) {
+        layout.classList.add("app-menu-open");
+      } else {
+        layout.classList.remove("app-menu-open");
+      }
+    }
+    var oppMenu = document.querySelector(".menu-icon");
+    oppMenu.addEventListener("click", toggleClassMenu, false);
+  </script>
+  <script src="/reload/reload.js"></script>
+</body>
+
 </html>
